@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>	
+        <a download href="./ger18 - тесты на вакансию.rar">Скачать скрипт</a>
+    <center>
+        <table border="3">
+            {section name=id loop=$tree}
+            <tr><td>
+                    {section name=br start=0 loop=$tree[id].depth} -</td><td> {/section}
+                    <form method='POST' href=".">				
+                        {$tree[id].path} - {$tree[id].text|htmlspecialchars}
+                        <input type='submit' value='удалить'>
+                        <input type='hidden' name='ID' value='{$tree[id].ID}'>
+                        <input type='hidden' name='act' value='del'>
+                    </form>
+
+                </td><td>
+
+                    <form method='POST' href=".">
+                        <input type='text' name='text'>
+                        <input type='submit' value='Добавить'>
+                        <input type='hidden' name='IDparent' value='{$tree[id].ID}'>
+                        <input type='hidden' name='act' value='new'>
+                    </form>
+
+                </td>
+
+                {assign var="lastdepth" value=$tree[id].depth}
+            </tr>
+            {/section}
+        </table>
+        <form method='POST' href=".">
+            <input type='text' name='text'>
+            <input type='hidden' name='act' value='new'>
+            <input type='submit' value='Добавить'>
+        </form>
+
+    </center>
+</body>
+</html>
