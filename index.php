@@ -1,6 +1,6 @@
 <?php
-
-include_once('somefile2.php');
+echo('123');
+include_once('somefile.php');
 if (!$GLOBALS['db']) {
     try {
         $db = new PDO("mysql:host=$db_host;dbname=$db_database", $db_user, $db_pass);
